@@ -14,11 +14,7 @@
   "dependencies": {
     "vaadin-core-elements": "vaadin-core#^1.6.0",
     "vaadin-button": "^2.0.1",
-<<<<<<< HEAD
-    "vaadin-text-field": "^2.0.1"
-=======
     "vaadin-text-field": "^2.0.1",
     "vaadin-item": "^2.0.0"
->>>>>>> origin/TrashBranch
   }
 }
