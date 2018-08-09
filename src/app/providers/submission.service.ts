@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Submission } from '../types/submission';
+import { Submission } from '../models/submission';
 import { of, Observable } from 'rxjs';
 
 @Injectable({

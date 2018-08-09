@@ -2,17 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AppRoutingModule } from './app-routing/app-routing.module';
-import { AppCommonModule } from './app-common/app-common.module';
-import { LayoutComponent } from './layout/layout.component';
+import { HomeComponent } from './components/home/home.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppCommonModule } from './app-common.module';
 import { PolymerModule } from '@codebakery/origami';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    LayoutComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
