@@ -1,4 +1,8 @@
-<p>
-  positions-overview works!
-  <a routerLink="/position/open-guard/">go to open guard</a>
-</p>
+<div>
+  <ul>
+    <li *ngFor="let position of positions">
+      <a [routerLink]="'/position/'+position.name">{{position.title}}</a>
+    </li>
+  </ul>
+
+</div>

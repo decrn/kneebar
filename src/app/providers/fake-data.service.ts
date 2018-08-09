@@ -5,6 +5,7 @@ import { DataService } from './data.service';
 import { Position } from '../models/position';
 import { Submission } from '../models/submission';
 import { Category } from '../models/category';
+import { Item } from '../models/item';
 @Injectable({
     providedIn: 'root',
 })
@@ -13,8 +14,8 @@ export class FakeDataService implements DataService {
 
     private submissions: Submission[] = [
         new Submission('ezekiel-choke', 'Ezekiel Choke'),
-        new Submission('darce-choke', 'D\'arce Choke'),
         new Submission('armbar', 'Armbar'),
+        new Submission('darce-choke', 'D\'arce Choke'),
     ];
 
     private positions: Position[] = [
@@ -43,14 +44,12 @@ export class FakeDataService implements DataService {
         return of(this.submissions);
     }
 
-    getPosition(name: string): Observable<Position> {
+    getItem(name: string): Observable<Item> {
+        const items = [];
+        this.positions.forEach(p => items.push(p));
+        this.submissions.forEach(s => items.push(s));
         return of(
-            this.positions.find(p => p.name.indexOf(name) > -1)
-        );
-    }
-    getSubmission(name: string): Observable<Submission> {
-        return of(
-            this.submissions.find(s => s.name.indexOf(name) > -1)
+            items.find(p => p.name.indexOf(name) > -1)
         );
     }
 

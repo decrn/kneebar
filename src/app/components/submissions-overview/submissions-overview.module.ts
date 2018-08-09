@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SubmissionsOverviewComponent } from './submissions-overview.component';
 import { RouterModule } from '../../../../node_modules/@angular/router';
 import { AppCommonModule } from '../../app-common.module';
+import { NgPipesModule } from '../../../../node_modules/ngx-pipes';
+import { FormsModule } from '../../../../node_modules/@angular/forms';
 
 const routes = [
   { path: '', component: SubmissionsOverviewComponent }
@@ -12,8 +14,11 @@ const routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    AppCommonModule
+    AppCommonModule,
+    FormsModule,
+    NgPipesModule
   ],
-  declarations: [SubmissionsOverviewComponent]
+  declarations: [SubmissionsOverviewComponent],
+  exports: []
 })
 export class SubmissionsOverviewModule { }

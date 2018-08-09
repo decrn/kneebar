@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DataService } from '../../providers/data.service';
+import { Position } from '../../models/position';
 
 @Component({
   selector: 'app-positions-overview',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PositionsOverviewComponent implements OnInit {
 
-  constructor() { }
+  positions: Position[] = [];
+
+  constructor(
+    @Inject('DataService') public ds: DataService
+  ) { }
 
   ngOnInit() {
+    this.ds.getPositions().subscribe(positions => this.positions = positions);
   }
 
 }

@@ -1,6 +1,6 @@
 import { Item } from './item';
 
-export class Submission extends Item {
+export class Submission implements Item {
     name: string;
     title: string;
     description: string;
@@ -9,6 +9,7 @@ export class Submission extends Item {
     video: string;
 
     constructor(name: string, title: string) {
-        super(name, title);
+        this.name = name;
+        this.title = title;
     }
 }

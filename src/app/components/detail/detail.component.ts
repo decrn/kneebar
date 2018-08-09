@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Item } from '../../models/item';
+import { DataService } from '../../providers/data.service';
 
 @Component({
   selector: 'app-detail',
@@ -8,11 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailComponent implements OnInit {
 
-  public name: string;
-  constructor(public route: ActivatedRoute) { }
+  public item: Item;
+  constructor(public route: ActivatedRoute, @Inject('DataService') public ds: DataService) { }
 
   ngOnInit() {
-    this.name = this.route.snapshot.paramMap.get('name');
+    this.ds.getItem(this.route.snapshot.paramMap.get('name')).subscribe(item => this.item = item);
   }
 
 }

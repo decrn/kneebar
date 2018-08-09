@@ -1,7 +1,7 @@
 import { Item } from './item';
 import { Submission } from './submission';
 
-export class Position extends Item {
+export class Position implements Item {
     name: string;
     title: string;
     description: string;
@@ -11,7 +11,8 @@ export class Position extends Item {
     submissions: Submission[];
 
     constructor(name: string, title: string, submissions: Submission[]) {
-        super(name, title);
+        this.name = name;
+        this.title = title;
         this.submissions = submissions;
     }
 }

@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppCommonModule } from './app-common.module';
 import { PolymerModule } from '@codebakery/origami';
+import { FakeDataService } from './providers/fake-data.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { PolymerModule } from '@codebakery/origami';
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  providers: [],
+  providers: [
+    { provide: 'DataService', useClass: FakeDataService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

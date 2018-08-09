@@ -23,8 +23,7 @@
     "@codebakery/origami": "^2.0.3",
     "@vaadin/vaadin-grid": "^5.0.0-pre.5",
     "core-js": "^2.5.4",
-    "ngx-onsenui": "^4.2.0",
-    "onsenui": "^2.10.1",
+    "ngx-pipes": "^2.3.5",
     "rxjs": "^6.2.0",
     "zone.js": "^0.8.26"
   },
