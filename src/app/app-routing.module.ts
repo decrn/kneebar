@@ -4,8 +4,11 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 
 const routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent }
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'positions', loadChildren: './components/positions-overview/positions-overview.module#PositionsOverviewModule' },
+  { path: 'submissions', loadChildren: './components/submissions-overview/submissions-overview.module#SubmissionsOverviewModule' },
+  { path: 'position/:name', loadChildren: './components/detail/detail.module#DetailModule' },
+  { path: 'submission/:name', loadChildren: './components/detail/detail.module#DetailModule' },
 ];
 
 @NgModule({
