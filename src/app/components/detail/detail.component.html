@@ -1,2 +1,12 @@
-<h2>{{item.title}}</h2>
-<p>{{item.description}}</p>
+<ng-container *ngIf="item">
+  <h2>{{item.title}}</h2>
+  <p>{{item.description}}</p>
+
+  <app-item-shelf *ngIf="isPosition(item)" [items]="item.submissions"></app-item-shelf>
+
+  <ng-template #submissionShelf>
+    <app-item-shelf [items]="item.submissions"></app-item-shelf>
+  </ng-template>
+  <app-item-shelf [items]="item.related"></app-item-shelf>
+
+</ng-container>

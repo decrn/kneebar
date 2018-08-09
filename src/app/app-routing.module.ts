@@ -5,8 +5,14 @@ import { HomeComponent } from './components/home/home.component';
 
 const routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'positions', loadChildren: './components/positions-overview/positions-overview.module#PositionsOverviewModule' },
-  { path: 'submissions', loadChildren: './components/submissions-overview/submissions-overview.module#SubmissionsOverviewModule' },
+  {
+    path: 'positions',
+    loadChildren: './components/positions-overview/positions-overview.module#PositionsOverviewModule'
+  },
+  {
+    path: 'submissions',
+    loadChildren: './components/submissions-overview/submissions-overview.module#SubmissionsOverviewModule'
+  },
   { path: 'position/:name', loadChildren: './components/detail/detail.module#DetailModule' },
   { path: 'submission/:name', loadChildren: './components/detail/detail.module#DetailModule' },
 ];

@@ -12,10 +12,8 @@ const routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
     RouterModule.forChild(routes),
     AppCommonModule,
-    FormsModule,
     NgPipesModule
   ],
   declarations: [SubmissionsOverviewComponent],

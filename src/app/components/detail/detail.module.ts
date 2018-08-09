@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DetailComponent } from './detail.component';
 import { RouterModule } from '../../../../node_modules/@angular/router';
 import { AppCommonModule } from '../../app-common.module';
+import { ItemShelfModule } from '../item-shelf/item-shelf.module';
 
 const routes = [
   { path: '', component: DetailComponent }
@@ -10,9 +11,9 @@ const routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
     RouterModule.forChild(routes),
-    AppCommonModule
+    AppCommonModule,
+    ItemShelfModule
   ],
   declarations: [DetailComponent]
 })

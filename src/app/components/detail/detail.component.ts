@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Item } from '../../models/item';
 import { DataService } from '../../providers/data.service';
+import { Position } from '../../models/position';
 
 @Component({
   selector: 'app-detail',
@@ -15,6 +16,10 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.ds.getItem(this.route.snapshot.paramMap.get('name')).subscribe(item => this.item = item);
+  }
+
+  isPosition(item: Item) {
+    return item instanceof Position;
   }
 
 }

@@ -1,7 +1,19 @@
-<div>
+<div class="breadcrumbs">
+  <a class="breadcrumb" href="#">Submissions</a>
+  >
+  <a class="breadcrumb" href="#">From Guard</a>
+  > All
+</div>
+<div *ngIf="category">
+  <h2>{{category.title}}</h2>
   <ul>
-    <li *ngFor="let position of positions">
-      <a [routerLink]="'/position/'+position.name">{{position.title}}</a>
+    <li *ngFor=" let subcat of category.subcategories ">
+      <a [routerLink]="[ '/positions/', subcat.name] ">{{subcat.title}}</a>
+    </li>
+  </ul>
+  <ul>
+    <li *ngFor="let item of category.items ">
+      <a [routerLink]=" '/position/'+item.name ">{{item.title}}</a>
     </li>
   </ul>
 

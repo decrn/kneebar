@@ -16,19 +16,31 @@ export class FakeDataService implements DataService {
         new Submission('ezekiel-choke', 'Ezekiel Choke'),
         new Submission('armbar', 'Armbar'),
         new Submission('darce-choke', 'D\'arce Choke'),
+        new Submission('rear-naked-choke', 'Rear Naked Choke'),
     ];
 
     private positions: Position[] = [
         new Position('butterfly-guard', 'Butterfly Guard', [this.submissions[1]]),
         new Position('spider-guard', 'Spider Guard', [this.submissions[1], this.submissions[2]]),
         new Position('crab-guard', 'Crab Guard', []),
+        new Position('back-mount', 'Back Mount', [this.submissions[3]]),
+    ];
+
+    private subcategories: Category[] = [
+        new Category('closed-guard', 'Closed Guard', [this.positions[1], this.positions[2]]),
+        new Category('open-guard', 'Open Guard', [this.positions[0]]),
     ];
 
     private categories: Category[] = [
-        new Category('closed-guard', 'Closed Guard', [this.positions[1], this.positions[2]]),
-        new Category('open-guard', 'Open Guard', [this.positions[0]]),
-        new Category('back-mount', 'Back Mount', []),
+        new Category('guard', 'Guard', [], [this.subcategories[0], this.subcategories[1]]),
+        new Category('mount', 'Mount', [this.positions[3]], []),
+        new Category('standing', 'Standing', [this.positions[2]], [this.subcategories[1]]),
     ];
+
+
+    private rootCategory: Category = new Category('', 'Positions', [], this.categories);
+
+    private allCategories = this.categories.concat(this.subcategories);
 
     constructor() { }
 
@@ -37,8 +49,8 @@ export class FakeDataService implements DataService {
     getPositions(): Observable<Position[]> {
         return of(this.positions);
     }
-    getCategories(name?: string): Observable<Category[]> {
-        return of(this.categories.filter(c => !name || c.name.indexOf(name) > -1));
+    getCategory(name?: string): Observable<Category> {
+        return of(!name ? this.rootCategory : this.allCategories.find(c => c.name === name));
     }
     getSubmissions(): Observable<Submission[]> {
         return of(this.submissions);
