@@ -1,7 +1,10 @@
 <div>
   <ul>
     <li *ngFor="let item of items">
-      <a [routerLink]="'/submission/'+item.name">{{item.title}}</a>
+      <a [routerLink]="'/submission/'+item.name">
+        <img src="assets/images/submissions/{{item.thumbnail}}.jpg" alt="{{item.title}}">
+        <span>{{item.title}}</span>
+      </a>
     </li>
   </ul>
 </div>

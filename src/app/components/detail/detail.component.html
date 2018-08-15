@@ -2,11 +2,20 @@
   <h2>{{item.title}}</h2>
   <p>{{item.description}}</p>
 
-  <app-item-shelf *ngIf="isPosition(item)" [items]="item.submissions"></app-item-shelf>
+  <ng-container *ngIf="isPosition(item); Else submissionShelf">
+    <h3>Possible Submissions from {{item.title}}</h3>
+    <app-item-shelf [items]="item.submissions"></app-item-shelf>
+  </ng-container>
 
   <ng-template #submissionShelf>
+    <h3>Related Submissions</h3>
     <app-item-shelf [items]="item.submissions"></app-item-shelf>
   </ng-template>
+  <h3>Also Worth Reading...</h3>
   <app-item-shelf [items]="item.related"></app-item-shelf>
+
+  <ng-container>
+
+  </ng-container>
 
 </ng-container>

@@ -6,10 +6,12 @@ export class Submission implements Item {
     description: string;
     related: Submission[];
     image: string;
+    thumbnail: string;
     video: string;
 
-    constructor(name: string, title: string) {
+    constructor(name: string, title: string, thumbnail: string) {
         this.name = name;
         this.title = title;
+        this.thumbnail = thumbnail;
     }
 }

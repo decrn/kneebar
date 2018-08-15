@@ -4,5 +4,6 @@ export interface Item {
     description: string;
     related: Item[];
     image: string;
+    thumbnail: string;
     video: string;
 }
