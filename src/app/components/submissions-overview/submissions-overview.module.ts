@@ -5,6 +5,8 @@ import { RouterModule } from '../../../../node_modules/@angular/router';
 import { AppCommonModule } from '../../app-common.module';
 import { NgPipesModule } from '../../../../node_modules/ngx-pipes';
 import { FormsModule } from '../../../../node_modules/@angular/forms';
+import {MatListModule} from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
 
 const routes = [
   { path: '', component: SubmissionsOverviewComponent }
@@ -14,7 +16,9 @@ const routes = [
   imports: [
     RouterModule.forChild(routes),
     AppCommonModule,
-    NgPipesModule
+    NgPipesModule,
+    MatListModule,
+    MatCardModule
   ],
   declarations: [SubmissionsOverviewComponent],
   exports: []

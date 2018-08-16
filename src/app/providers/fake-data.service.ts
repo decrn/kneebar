@@ -13,10 +13,10 @@ import { Item } from '../models/item';
 export class FakeDataService implements DataService {
 
     private submissions: Submission[] = [
-        new Submission('ezekiel-choke', 'Ezekiel Choke', 'armbar'),
-        new Submission('armbar', 'Armbar', 'armbar'),
-        new Submission('darce-choke', 'D\'arce Choke', 'armbar'),
-        new Submission('rear-naked-choke', 'Rear Naked Choke', 'armbar'),
+        new Submission('ezekiel-choke', 'Ezekiel Choke', 'armbar.jpg'),
+        new Submission('armbar', 'Armbar', 'armbar.jpg'),
+        new Submission('darce-choke', 'D\'arce Choke', 'armbar.jpg'),
+        new Submission('rear-naked-choke', 'Rear Naked Choke', 'armbar.jpg'),
     ];
 
     private positions: Position[] = [
