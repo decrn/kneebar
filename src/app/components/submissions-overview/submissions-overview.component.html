@@ -3,7 +3,12 @@
   <button (click)="query = ''">clear search</button>
   <ul>
     <li *ngFor=" let submission of (submissions | orderBy: 'title' | filterBy:['title', 'name'] : query)">
-      <a [routerLink]=" '/submission/'+submission.name ">{{submission.title}}</a>
+      <img src="'assets/images/submissions/' + 'submission.thumbnail'" alt="submission.title">
+      <div>
+        <a [routerLink]=" '/submission/'+submission.name "><h4>{{submission.title}}</h4></a>
+        <p>{{submission.description}}</p>
+      </div>
+      <span class="rating">{{submission.rating}}</span>
     </li>
   </ul>
 

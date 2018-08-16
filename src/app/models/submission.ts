@@ -8,6 +8,7 @@ export class Submission implements Item {
     image: string;
     thumbnail: string;
     video: string;
+    rating: number;
 
     constructor(name: string, title: string, thumbnail: string) {
         this.name = name;

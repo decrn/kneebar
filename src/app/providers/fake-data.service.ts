@@ -44,6 +44,7 @@ export class FakeDataService implements DataService {
 
     constructor() {
         this.submissions.forEach(s => s.description = 'Lorem Ipsum dolor sid amed. Escquiscet sum loano');
+        this.submissions.forEach(s => s.rating = 15);
         this.positions.forEach(p => p.description = 'Lorem Ipsum dolor sid amed. Escquiscet sum loano');
     }
 
