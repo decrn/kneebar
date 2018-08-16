@@ -5,8 +5,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppCommonModule } from './app-common.module';
-import { PolymerModule } from '@codebakery/origami';
 import { FakeDataService } from './providers/fake-data.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { FakeDataService } from './providers/fake-data.service';
     BrowserModule,
     AppRoutingModule,
     AppCommonModule,
-    PolymerModule.forRoot()
+    BrowserAnimationsModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

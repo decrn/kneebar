@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '../../node_modules/@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ItemShelfModule } from './components/item-shelf/item-shelf.module';
 
 @NgModule({
   imports: [
