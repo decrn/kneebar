@@ -42,7 +42,10 @@ export class FakeDataService implements DataService {
 
     private allCategories = this.categories.concat(this.subcategories);
 
-    constructor() { }
+    constructor() {
+        this.submissions.forEach(s => s.description = 'Lorem Ipsum dolor sid amed. Escquiscet sum loano');
+        this.positions.forEach(p => p.description = 'Lorem Ipsum dolor sid amed. Escquiscet sum loano');
+    }
 
 
 

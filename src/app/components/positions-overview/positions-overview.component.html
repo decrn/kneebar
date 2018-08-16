@@ -6,6 +6,6 @@
 </div>
 <div *ngIf="category">
   <h2>{{category.title}}</h2>
-  <app-discover-tiles [items]="category.subcategories"></app-discover-tiles>
+  <app-discover-tiles [items]="category.subcategories"></app-discover-tiles> // maybe make this if else because both are impossible
   <app-discover-tiles [items]="category.items"></app-discover-tiles>
 </div>
