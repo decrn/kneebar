@@ -20,21 +20,21 @@ export class FakeDataService implements DataService {
     ];
 
     private positions: Position[] = [
-        new Position('butterfly-guard', 'Butterfly Guard', 'butterfly-guard', [this.submissions[1]]),
-        new Position('spider-guard', 'Spider Guard', 'spider-guard', [this.submissions[1], this.submissions[2]]),
-        new Position('de-la-riva-guard', 'De La Riva Guard', 'dlr-guard', []),
-        new Position('back-mount', 'Back Mount', 'back-mount', [this.submissions[3]]),
+        new Position('butterfly-guard', 'Butterfly Guard', 'butterfly-guard.jpg', [this.submissions[1]]),
+        new Position('spider-guard', 'Spider Guard', 'spider-guard.jpg', [this.submissions[1], this.submissions[2]]),
+        new Position('de-la-riva-guard', 'De La Riva Guard', 'dlr-guard.jpg', []),
+        new Position('back-mount', 'Back Mount', 'back-mount.jpg', [this.submissions[3]]),
     ];
 
     private subcategories: Category[] = [
-        new Category('closed-guard', 'Closed Guard', 'closed-guard', [this.positions[1], this.positions[2]]),
-        new Category('open-guard', 'Open Guard', 'open-guard', [this.positions[0]]),
+        new Category('closed-guard', 'Closed Guard', 'closed-guard.jpg', [this.positions[1], this.positions[2]]),
+        new Category('open-guard', 'Open Guard', 'open-guard.jpg', [this.positions[0]]),
     ];
 
     private categories: Category[] = [
-        new Category('guard', 'Guard', 'guard', [], [this.subcategories[0], this.subcategories[1]]),
-        new Category('mount', 'Mount', 'mount', [this.positions[3]], []),
-        new Category('standing', 'Standing', 'standing', [this.positions[2]], [this.subcategories[1]]),
+        new Category('guard', 'Guard', 'guard.jpg', [], [this.subcategories[0], this.subcategories[1]]),
+        new Category('mount', 'Mount', 'mount.jpg', [this.positions[3]], []),
+        new Category('standing', 'Standing', 'standing.jpg', [this.positions[2]], [this.subcategories[1]]),
     ];
 
 
@@ -43,9 +43,11 @@ export class FakeDataService implements DataService {
     private allCategories = this.categories.concat(this.subcategories);
 
     constructor() {
-        this.submissions.forEach(s => s.description = 'Lorem Ipsum dolor sid amed. Escquiscet sum loano');
+        this.submissions.forEach(
+            s => s.description = 'Lorem Ipsum dolor sid amed. Escquiscet sum loano. Lorem Ipsum dolor sid amed. Escquiscet sum loano');
         this.submissions.forEach(s => s.rating = 15);
-        this.positions.forEach(p => p.description = 'Lorem Ipsum dolor sid amed. Escquiscet sum loano');
+        this.positions.forEach(
+            p => p.description = 'Lorem Ipsum dolor sid amed. Escquiscet sum loano. Lorem Ipsum dolor sid amed. Escquiscet sum loano');
     }
 
 

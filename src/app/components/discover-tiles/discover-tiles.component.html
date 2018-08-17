@@ -3,13 +3,13 @@
     <li *ngFor="let item of items">
       <ng-container *ngIf="isCategory(item); Else positionTile">
         <a [routerLink]="[ '/positions/', item.name]">
-          <img src="assets/images/positions/{{item.thumbnail}}.jpg" alt="{{item.title}}">
+          <img src="assets/images/positions/thumbnails/{{item.thumbnail}}" alt="{{item.title}}">
           <span>{{item.title}}</span>
         </a>
       </ng-container>
       <ng-template #positionTile>
         <a [routerLink]="[ '/position/', item.name]">
-          <img src="assets/images/positions/{{item.thumbnail}}.jpg" alt="{{item.title}}">
+          <img src="assets/images/positions/thumbnails/{{item.thumbnail}}" alt="{{item.title}}">
           <span>{{item.title}}</span>
         </a>
       </ng-template>

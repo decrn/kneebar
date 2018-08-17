@@ -1,31 +1,25 @@
-<div>
-  <input type="text" placeholder="search" [(ngModel)]="query">
-  <button (click)="query = ''">clear search</button>
-  <mat-list>
-      <mat-list-item *ngFor="let submission of (submissions | orderBy: 'title' | filterBy:['title', 'name'] : query)">
-        <img matListAvatar src="assets/images/submissions/thumbnails/{{submission.thumbnail}}" alt="submission.title">
-        <h3 matLine><a [routerLink]="[ '/submission/', submission.name]">{{submission.title}}</a></h3>
-        <p matLine>
-          <span> {{submission.description}} </span>
-        </p>
-        <div>
-          {{submission.rating}}
-        </div>
+<h1>Submissions</h1>
+<div class="submission-overview">
+  <div class="search">
+    <mat-form-field class="search-form">
+      <input matInput type="text" placeholder="Search submissions" [(ngModel)]="query">
+      <button mat-button *ngIf="query" matSuffix mat-icon-button aria-label="Clear" (click)="query = ''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="submission-list">
+    <mat-list>
+      <mat-list-item [routerLink]="[ '/submission/', submission.name]" *ngFor="let submission of (submissions | orderBy: 'title' | filterBy:['title', 'name'] : query)">
+          <img matListAvatar src="assets/images/submissions/thumbnails/{{submission.thumbnail}}" alt="submission.title">
+          <h3 matLine>{{submission.title}}</h3>
+          <p matLine>
+            <span> {{submission.description}} </span>
+          </p>
+          <div class="rating">
+            {{submission.rating}}
+          </div>
       </mat-list-item>
     </mat-list>
-</div>
-<div class="cards">
-  <mat-card class="example-card" *ngFor="let submission of (submissions | orderBy: 'title' | filterBy:['title', 'name'] : query)">
-      <mat-card-header>
-        <div mat-card-avatar class="header-image"><img class="header-image" matListAvatar src="assets/images/submissions/{{submission.thumbnail}}" alt="submission.title"></div>
-        <mat-card-title>{{submission.title}}</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-            {{submission.description}}
-        </p>
-      </mat-card-content>
-    </mat-card>
+  </div>
 </div>

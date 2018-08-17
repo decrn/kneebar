@@ -1,19 +1,19 @@
 <ng-container *ngIf="item">
-  <h2>{{item.title}}</h2>
-  <h3>Overview</h3>
+  <h1>{{item.title}}</h1>
+  <h2>Overview</h2>
   <p>{{item.description}}</p>
     
   <ng-container *ngIf="isPosition(item); Else submissionShelf">
-    <h3>Submissions from {{item.title}}</h3>
+    <h2>Submissions from {{item.title}}</h2>
     <app-item-shelf [items]="item.submissions"></app-item-shelf>
   </ng-container>
 
   <ng-template #submissionShelf>
-      <h3>Positions to get to {{item.title}}</h3>
+      <h2>Positions to get to {{item.title}}</h2>
     <app-item-shelf [items]="item.submissions"></app-item-shelf>
   </ng-template>
-  <h3 *ngIf="isPosition(item)">Related Positions</h3>
-  <h3 *ngIf="!isPosition(item)">Related Submissions</h3>
+  <h2 *ngIf="isPosition(item)">Related Positions</h2>
+  <h2 *ngIf="!isPosition(item)">Related Submissions</h2>
   <app-item-shelf [items]="item.related"></app-item-shelf>
 
   <ng-container>
