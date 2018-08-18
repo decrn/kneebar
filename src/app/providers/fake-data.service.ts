@@ -6,6 +6,7 @@ import { Position } from '../models/position';
 import { Submission } from '../models/submission';
 import { Category } from '../models/category';
 import { Item } from '../models/item';
+import { Comment } from '../models/comment';
 @Injectable({
     providedIn: 'root',
 })
@@ -13,10 +14,10 @@ import { Item } from '../models/item';
 export class FakeDataService implements DataService {
 
     private submissions: Submission[] = [
-        new Submission('ezekiel-choke', 'Ezekiel Choke', 'armbar.jpg'),
+        new Submission('ezekiel-choke', 'Ezekiel Choke', 'ezekiel.jpg'),
         new Submission('armbar', 'Armbar', 'armbar.jpg'),
-        new Submission('darce-choke', 'D\'arce Choke', 'armbar.jpg'),
-        new Submission('rear-naked-choke', 'Rear Naked Choke', 'armbar.jpg'),
+        new Submission('darce-choke', 'D\'arce Choke', 'darce.jpg'),
+        new Submission('rear-naked-choke', 'Rear Naked Choke', 'rnc.jpg'),
     ];
 
     private positions: Position[] = [
@@ -36,6 +37,11 @@ export class FakeDataService implements DataService {
         new Category('mount', 'Mount', 'mount.jpg', [this.positions[3]], []),
         new Category('standing', 'Standing', 'standing.jpg', [this.positions[2]], [this.subcategories[1]]),
     ];
+
+    private comments: Comment[] = [
+        new Comment('jiujitsu4life', 'I really like this style of submission. Works for me in competition and on the mats.'),
+        new Comment('ilovearmbars1992', 'I\'m new to ground fighting but I\'m already in love! What\'s next???'),
+    ]
 
 
     private rootCategory: Category = new Category('', 'Positions overview', '', [], this.categories);
@@ -75,5 +81,7 @@ export class FakeDataService implements DataService {
         );
     }
 
-
+    getComments(name: string): Observable<Comment[]> {
+        return of(this.comments);
+    }
 }

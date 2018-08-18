@@ -16,7 +16,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.ds.getItem(this.route.snapshot.paramMap.get('name')).subscribe(item => this.item = item);
-    console.log(this.item);
+    console.log(this.ds.getComments('armbar'));
   }
 
   isPosition(item: Item) {

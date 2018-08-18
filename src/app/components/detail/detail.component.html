@@ -29,9 +29,13 @@
       <h2 *ngIf="!isPosition(item)">Related Submissions</h2>
       <app-item-shelf [items]="item.related"></app-item-shelf>
   
+      <mat-divider></mat-divider>
+      <h2>User comments</h2>
       <ng-container>
-  
+        <app-commentbox [item]="item"></app-commentbox>
+        <mat-divider></mat-divider>
       </ng-container>
+      
     </div>
   </div>
 
