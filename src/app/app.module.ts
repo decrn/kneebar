@@ -7,6 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppCommonModule } from './app-common.module';
 import { FakeDataService } from './providers/fake-data.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     AppCommonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

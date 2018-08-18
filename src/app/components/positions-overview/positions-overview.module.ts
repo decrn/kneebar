@@ -14,7 +14,7 @@ const routes = [
   imports: [
     RouterModule.forChild(routes),
     AppCommonModule,
-    DiscoverTilesModule
+    DiscoverTilesModule,
   ],
   declarations: [PositionsOverviewComponent]
 })

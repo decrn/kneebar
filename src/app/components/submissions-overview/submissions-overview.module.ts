@@ -8,8 +8,7 @@ import { FormsModule } from '../../../../node_modules/@angular/forms';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+
 
 const routes = [
   { path: '', component: SubmissionsOverviewComponent }
@@ -22,9 +21,7 @@ const routes = [
     NgPipesModule,
     MatListModule,
     MatCardModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule
+    MatInputModule
   ],
   declarations: [SubmissionsOverviewComponent],
   exports: []

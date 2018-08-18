@@ -1,24 +1,28 @@
 @import '../styles/variables.less';
 
-.topbar {
-
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 10px 15px;
-  background-color: @background-light;
-  color: @primary;
+mat-toolbar {
   box-shadow: @shadow-light;
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  border-bottom: 5px black;
+  z-index: 2;
 }
 
-nav {
+nav ul {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+
+  li {
+    display: block;
+    padding: 0 10px;
+  }
 }
 
 .content {
-  width: 80%;
   margin: 0 auto;
 }
 

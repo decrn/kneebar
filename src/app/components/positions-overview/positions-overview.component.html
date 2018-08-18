@@ -1,11 +1,7 @@
-<div class="breadcrumbs">
-  <a class="breadcrumb" href="#">Submissions</a>
-  >
-  <a class="breadcrumb" href="#">From Guard</a>
-  > All
-</div>
 <div *ngIf="category">
-  <h2>{{category.title}}</h2>
+  <mat-toolbar class="header">
+      <h1>{{category.title}}</h1>
+  </mat-toolbar>
   <app-discover-tiles [items]="category.subcategories"></app-discover-tiles> // maybe make this if else because both are impossible
   <app-discover-tiles [items]="category.items"></app-discover-tiles>
 </div>

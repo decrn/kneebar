@@ -38,7 +38,7 @@ export class FakeDataService implements DataService {
     ];
 
 
-    private rootCategory: Category = new Category('', 'Positions', '', [], this.categories);
+    private rootCategory: Category = new Category('', 'Positions overview', '', [], this.categories);
 
     private allCategories = this.categories.concat(this.subcategories);
 
