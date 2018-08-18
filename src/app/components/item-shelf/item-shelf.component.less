@@ -1,26 +1,13 @@
 @import '../../../styles/variables.less';
 
-ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-
-    li {
-        display: block;
-        background-color: @background-very-light;
-        box-shadow: 5px 10px @shadow-light;
-        padding: 15px;
-        margin: 25px;
-        width: 120px;
-
-        img {
-            width: 100%;
-        }
-
-        span {
-            display: block;
-            text-align: center;
-        }
+mat-card {
+    margin: 0 20px 20px;
+    width: 80px;
+    cursor: pointer !important;
+  
+    mat-card-footer {
+      text-align: center;
+      font: 300 16px "Roboto","Helvetica",sans-serif;
+      padding-bottom: 16px;
     }
 }

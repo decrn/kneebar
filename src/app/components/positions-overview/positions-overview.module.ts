@@ -4,7 +4,7 @@ import { PositionsOverviewComponent } from './positions-overview.component';
 import { RouterModule } from '../../../../node_modules/@angular/router';
 import { AppCommonModule } from '../../app-common.module';
 import { ItemShelfModule } from '../item-shelf/item-shelf.module';
-import { DiscoverTilesModule } from '../discover-tiles/discover-tiles.module';
+import { MatCardModule} from '@angular/material/card';
 
 const routes = [
   { path: '**', component: PositionsOverviewComponent }
@@ -14,7 +14,7 @@ const routes = [
   imports: [
     RouterModule.forChild(routes),
     AppCommonModule,
-    DiscoverTilesModule,
+    MatCardModule,
   ],
   declarations: [PositionsOverviewComponent]
 })

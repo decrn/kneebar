@@ -1,24 +1,38 @@
 <ng-container *ngIf="item">
-    <mat-toolbar class="header">
-        <h1>{{item.title}}</h1>
-    </mat-toolbar>
-  <h2>Overview</h2>
-  <p>{{item.description}}</p>
-    
-  <ng-container *ngIf="isPosition(item); Else submissionShelf">
-    <h2>Submissions from {{item.title}}</h2>
-    <app-item-shelf [items]="item.submissions"></app-item-shelf>
-  </ng-container>
+  <mat-toolbar class="header">
+    <h1>{{item.title}}</h1>
+    <div class="tags">
+        <mat-chip-list>
+          <mat-chip *ngFor="let tag of item.tags">{{tag}}</mat-chip>
+        </mat-chip-list>
+      </div>
+  </mat-toolbar>
+  <div class="detail-page-container">
+    <div class="detail-page-content">
+      <div class="banner-image">
+        <img *ngIf="!isPosition(item)" src="assets/images/submissions/{{item.image}}" alt="{{item.title}}">
+        <img *ngIf="isPosition(item)" src="assets/images/positions/{{item.image}}" alt="{{item.title}}">
+      </div>
+      <h2>Overview</h2>
+      <section class="intro">
+        <p>{{item.description}}</p>
+      </section>
+  
+      <ng-container *ngIf="isPosition(item)">
+        <h2>Submissions from {{item.title}}</h2>
+        <div class="shelf">
+          <app-item-shelf [items]="item.submissions"></app-item-shelf>
+        </div>
+      </ng-container>
+  
+      <h2 *ngIf="isPosition(item)">Related Positions</h2>
+      <h2 *ngIf="!isPosition(item)">Related Submissions</h2>
+      <app-item-shelf [items]="item.related"></app-item-shelf>
+  
+      <ng-container>
+  
+      </ng-container>
+    </div>
+  </div>
 
-  <ng-template #submissionShelf>
-      <h2>Positions to get to {{item.title}}</h2>
-    <app-item-shelf [items]="item.submissions"></app-item-shelf>
-  </ng-template>
-  <h2 *ngIf="isPosition(item)">Related Positions</h2>
-  <h2 *ngIf="!isPosition(item)">Related Submissions</h2>
-  <app-item-shelf [items]="item.related"></app-item-shelf>
-
-  <ng-container>
-    
-  </ng-container>
 </ng-container>

@@ -1,11 +1,33 @@
 @import '../../../styles/variables.less';
 
-.breadcrumbs {
-    background-color: @background-very-light;
-    padding: 12px 40px 8px;
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   
-    .breadcrumb {
-      text-decoration: none;
-      color: @primary;
+  .tile-content {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    .discover-tiles {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
     }
   }
+}
+
+mat-card {
+  margin: 20px;
+  width: 80px;
+  cursor: pointer !important;
+
+  mat-card-footer {
+    text-align: center;
+    font: 300 16px "Roboto","Helvetica",sans-serif;
+    padding-bottom: 16px;
+  }
+}

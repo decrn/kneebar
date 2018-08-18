@@ -1,7 +1,21 @@
 <div *ngIf="category">
   <mat-toolbar class="header">
-      <h1>{{category.title}}</h1>
+    <h1>{{category.title}}</h1>
   </mat-toolbar>
-  <app-discover-tiles [items]="category.subcategories"></app-discover-tiles> // maybe make this if else because both are impossible
-  <app-discover-tiles [items]="category.items"></app-discover-tiles>
+  <div class="content">
+    <div class="tile-content">
+      <div class="subcategories discover-tiles">
+        <mat-card *ngFor="let subcat of category.subcategories" [routerLink]="[ '/positions/', subcat.name]">
+          <mat-card-footer>{{subcat.title}}</mat-card-footer>
+          <img mat-card-image src="assets/images/positions/thumbnails/{{subcat.thumbnail}}" alt="{{subcat.title}}">
+        </mat-card>
+      </div>
+      <div class="items discover-tiles">
+        <mat-card *ngFor="let item of category.items" [routerLink]="[ '/position/', item.name]">
+          <mat-card-footer>{{item.title}}</mat-card-footer>
+          <img mat-card-image src="assets/images/positions/thumbnails/{{item.thumbnail}}" alt="{{item.title}}">
+        </mat-card>
+      </div>
+    </div>
+  </div>
 </div>
