@@ -131,19 +131,19 @@ export class FakeDataService implements DataService {
     sendLogin(username: string, password: string): Observable<Status> {
         console.log('login', username, password);
         if (username === 'denis') {
-            this.user = new User('denis', 'tuur');
+            this.user = new User('', 'denis', 'tuur'); // doesnt work anymore
             this.jwttoken = 'magic';
             return of (new Status(true));
         }
         return of (new Status(false, 'Invalid credentials'));
     }
 
-    sendRegister(username: string, password: string): Observable<Status> {
+    sendRegister(username: string, email: string, password: string): Observable<Status> {
         console.log('register', username, password);
         if (username === 'denis') {
             return of (new Status(false, 'Account already exists!'));
         }
-        this.user = new User('denis', 'tuur');
+        this.user = new User('', 'denis', 'tuur'); // doesnt work anymore
         this.jwttoken = 'magic';
         return of (new Status(true));
     }

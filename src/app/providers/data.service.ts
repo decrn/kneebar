@@ -20,5 +20,5 @@ export interface DataService {
 
     sendComment(message: string): Observable<Status>;
     sendLogin(username: string, password: string): Observable<Status>;
-    sendRegister(username: string, password: string): Observable<Status>;
+    sendRegister(username: string, email: string, password: string): Observable<Status>;
 }

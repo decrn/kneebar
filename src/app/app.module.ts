@@ -1,3 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
+import { RealDataService } from './providers/real-data.service';
 import { NavModule } from './components/nav/nav.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { WebStorageModule } from 'ngx-store';
@@ -18,6 +20,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     WebStorageModule,
     AppRoutingModule,
     AppCommonModule,
@@ -29,7 +32,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [
-    { provide: 'DataService', useClass: FakeDataService }
+    { provide: 'DataService', useClass: RealDataService }
   ],
   bootstrap: [AppComponent]
 })
