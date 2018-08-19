@@ -1,3 +1,9 @@
-<p>
-  account works!
-</p>
+<mat-toolbar class="header">
+  <h1>Account overview</h1>
+</mat-toolbar>
+<h1>Welcome to your account overview, {{user.username}}</h1>
+<button mat-button (click)="ds.logout()">Logout</button>
+
+<h2>Your comments</h2>
+<app-comment-view [comments]="comments"></app-comment-view>
+
