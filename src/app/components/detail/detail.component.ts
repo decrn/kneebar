@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Item } from '../../models/item';
 import { DataService } from '../../providers/data.service';
 import { Position } from '../../models/position';
+import { Comment } from '../../models/comment';
 
 @Component({
   selector: 'app-detail',
@@ -12,11 +13,16 @@ import { Position } from '../../models/position';
 export class DetailComponent implements OnInit {
 
   public item: Item;
-  constructor(public route: ActivatedRoute, @Inject('DataService') public ds: DataService) { }
+  comments: Comment[];
+
+  constructor(
+    public route: ActivatedRoute,
+    @Inject('DataService') public ds: DataService
+  ) { }
 
   ngOnInit() {
     this.ds.getItem(this.route.snapshot.paramMap.get('name')).subscribe(item => this.item = item);
-    console.log(this.ds.getComments('armbar'));
+    this.ds.getCommentsByItem(this.item.name).subscribe(comments => this.comments = comments);
   }
 
   isPosition(item: Item) {

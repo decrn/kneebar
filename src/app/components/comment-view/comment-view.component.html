@@ -1,6 +1,15 @@
+<mat-form-field>
+  <mat-select [(ngModel)]="sorting" placeholder="Order by">
+    <mat-option value="-date">newest first</mat-option>
+    <mat-option value="date">oldest first</mat-option>
+  </mat-select>
+</mat-form-field>
 <ul class="comments">
-  <li *ngFor="let comment of comments">
-    <span class="author">{{comment.author}}</span>
+  <li *ngFor="let comment of (comments | orderBy:sorting)">
+    <div class="comment-info">
+      <span class="author">{{comment.author.username}}</span>
+      <span class="date">{{comment.date | date:'medium'}}</span>
+    </div>
     <p>{{comment.comment}}</p>
   </li>
 </ul>

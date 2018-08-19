@@ -1,5 +1,7 @@
+import { User } from '../../models/user';
+import { DataService } from '../../providers/data.service';
 import { Item } from '../../models/item';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-comment-box',
@@ -9,10 +11,25 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CommentBoxComponent implements OnInit {
 
   @Input('item') item: Item;
+  errorMessage: string;
+  user: User;
 
-  constructor() { }
+  constructor(
+    @Inject('DataService') public ds: DataService
+  ) { }
 
   ngOnInit() {
+    this.ds.getLoggedInUser().subscribe(u => this.user = u);
+  }
+
+  sendComment(commentText: string) {
+    this.errorMessage = '';
+    this.ds.sendComment(commentText).subscribe(s => {
+      console.log(s);
+      if (!s.success) {
+        this.errorMessage = s.errorMessage;
+      }
+    });
   }
 
 }

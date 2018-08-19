@@ -1,12 +1,13 @@
 <div class="commentbox">
   <h3>Leave a comment on {{item.title}}</h3>
   <mat-form-field class="name">
-    <input type="text" matInput disabled placeholder="Commenting as..." value="ilovearmbars1992">
+    <input type="text" matInput disabled placeholder="Commenting as..." [value]="user.username">
   </mat-form-field>
   <mat-form-field class="comment" appearance="fill">
-    <textarea maxlength="1000" rows="6" matInput placeholder="Enter your comment..."></textarea>
+    <textarea [(ngModel)]="commentText" maxlength="1000" rows="6" matInput placeholder="Enter your comment..." required></textarea>
+    <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
   </mat-form-field>
   <div class="buttons">
-    <button class="submit" mat-raised-button color="primary">Submit</button>
+    <button class="submit" (click)="sendComment(commentText)" mat-raised-button color="primary">Submit</button>
   </div>
 </div>

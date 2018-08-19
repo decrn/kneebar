@@ -31,11 +31,15 @@
   
       <mat-divider></mat-divider>
       <h2>User comments</h2>
-      <ng-container>
+      <ng-container *ngIf="ds.isLoggedIn(); else loginCTA">
         <app-comment-box [item]="item"></app-comment-box>
         <mat-divider></mat-divider>
       </ng-container>
-      <app-comment-view [item]="item"></app-comment-view>
+      <ng-template #loginCTA>
+        <h4>Please log in to leave comments...</h4>
+        <button mat-raised-button color="primary" [routerLink]="'/login'">Log in</button>
+      </ng-template>
+      <app-comment-view [comments]="comments"></app-comment-view>
     </div>
   </div>
 
