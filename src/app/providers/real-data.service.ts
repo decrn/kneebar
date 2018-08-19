@@ -56,7 +56,7 @@ export class RealDataService implements DataService {
     }
     getItem(name: string): Observable<Item> {
         this.loading = true;
-        return this.http.get(this.url + 'submissions').pipe(map((p: any) => {
+        return this.http.get(this.url + 'item/' + name).pipe(map((p: any) => {
             this.loading = false;
             if (p.type === 'position') {
                 return new Position(p.name, p.title, p.thumbnail, p.submission);
@@ -67,37 +67,25 @@ export class RealDataService implements DataService {
     }
     getCommentsByItem(name: string): Observable<Comment[]> {
         this.loading = true;
-        return this.http.get(this.url + 'comments/' + name).map((response) => {
+        return this.http.get(this.url + 'comments/' + name).pipe(map((json: any) => {
             this.loading = false;
-            const json = response.json();
             return json.map(p => new Comment(p.author, p.comment, p.date));
-        }).catch((error: any) => {
-            this.loading = false;
-            return Observable.throw(error.json().error || 'Server error');
-        });
+        }));
     }
     getCommentsByUser(): Observable<Comment[]> {
         this.loading = true;
-        return this.http.get(this.url + 'comments').map((response) => {
+        return this.http.get(this.url + 'comments').pipe(map((json: any) => {
             this.loading = false;
-            const json = response.json();
             return json.map(p => new Comment(p.author, p.comment, p.date));
-        }).catch((error: any) => {
-            this.loading = false;
-            return Observable.throw(error.json().error || 'Server error');
-        });
+        }));
     }
 
     getLoggedInUser(): Observable<User> {
         this.loading = true;
-        return this.http.get(this.url + 'users/account').map((response) => {
+        return this.http.get(this.url + 'users/account').pipe(map((json: any) => {
             this.loading = false;
-            const json = response.json();
             return new User(json._id, json.username, json.email);
-        }).catch((error: any) => {
-            this.loading = false;
-            return Observable.throw(error.json().error || 'Server error');
-        });
+        }));
     }
 
     isLoggedIn(): boolean {
@@ -113,23 +101,23 @@ export class RealDataService implements DataService {
     sendComment(message: string): Observable<Status> {
         return this.http.post(this.url + 'comment', {
             comment: message
-        }).map(res => res.json()).map(res => {
-            
-            return new Comment(this.user, res.comment, res.date);
-        }).catch((err: Response) => Observable.throw(err.json()) );
+        }).pipe(map((json: any) => {
+            return new Status();
+            // return new Comment(this.user, res.comment, res.date);
+        }));
     }
 
     sendLogin(username: string, password: string): Observable<Status> {
         return this.http.post(this.url + 'users/login', {
             username: username,
             password: password
-        }).map(res => res.json()).map(res => {
-        if (res.token) {
-            this.jwttoken = res.token;
-            return true;
-        }
-        return false;
-        }).catch((err: Response) => Observable.throw(err.json()) );
+        }).pipe(map((json: any) => {
+            if (json.token) {
+                this.jwttoken = json.token;
+                return new Status(true);
+            }
+            return new Status(false, 'Invalid credentials');
+        }));
     }
 
     sendRegister(username: string, email: string, password: string): Observable<Status> {
@@ -137,12 +125,12 @@ export class RealDataService implements DataService {
             username: username,
             email: email,
             password: password
-        }).map(res => res.json()).map(res => {
-        if (res.token) {
-            this.jwttoken = res.token;
-            return true;
-        }
-        return false;
-        }).catch((err: Response) => Observable.throw(err.json()) );
+        }).pipe(map((json: any) => {
+            if (json.token) {
+                this.jwttoken = json.token;
+                return new Status(true);
+            }
+            return new Status(false, 'Invalid credentials');
+        }));
     }
 }
