@@ -1,3 +1,73 @@
-<p>
-  login-register works!
-</p>
+<mat-toolbar class="header">
+  <h1>Login / Register</h1>
+</mat-toolbar>
+
+<!-- login form -->
+
+<div class="container">
+  <div class="page-content">
+    <div class="login form">
+      <h2>Login</h2>
+      <form [formGroup]="loginform" (ngSubmit)="login()" novalidate>
+        
+        <mat-form-field>
+          <input matInput placeholder="Username" name="username" formControlName="username" required>
+          <mat-error *ngIf="isErrorVisible(loginform.get('username'), 'required')">This field cannot be empty.</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password" name="password" formControlName="password" required>
+          <mat-error *ngIf="isErrorVisible(loginform.get('password'), 'required')">This field cannot be empty.</mat-error>
+          <mat-error *ngIf="isErrorVisible(loginform.get('password'), 'credentials')">Invalid username or password.</mat-error>
+        </mat-form-field>
+      
+        <div class="buttons">
+          <button mat-raised-button color="primary" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+    
+    <!-- register form -->
+    
+    <div class="register form">
+      <h2>Register</h2>
+      <form [formGroup]="registerform" (ngSubmit)="register()" novalidate>
+        
+        <mat-form-field>
+          <input matInput placeholder="Desired username" name="username" formControlName="username" required>
+          <mat-error *ngIf="isErrorVisible(registerform.get('username'), 'required')">This field cannot be empty.</mat-error>
+        </mat-form-field>
+          
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="email" name="email" type="email" required>
+          <mat-error *ngIf="isErrorVisible(registerform.get('email'), 'required')">This field cannot be empty.</mat-error>
+          <mat-error *ngIf="isErrorVisible(registerform.get('email'), 'email')">This is not a valid email address.</mat-error>
+        </mat-form-field>
+      
+        <ng-container formGroupName="passwords">
+      
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password" name="password" formControlName="password" required>
+            <mat-error *ngIf="isErrorVisible(registerform.get('passwords.password'), 'required')">This field cannot be empty.</mat-error>
+            <mat-error *ngIf="isErrorVisible(registerform.get('passwords.password'), 'minlength')">Password requires at least 8 characters.</mat-error>
+          </mat-form-field>
+      
+          <mat-form-field>
+            <input matInput type="password" placeholder="Repeat password" name="password2" formControlName="password2" required>
+            <mat-error *ngIf="isErrorVisible(registerform.get('passwords'), 'mismatch')">Passwords do not match.</mat-error>
+          </mat-form-field>
+        </ng-container>
+      
+        <div class="bottom-row">
+          <span class="error" *ngIf="isErrorVisible(registerform.get('passwords'), 'generic')">
+              {{registerform.get('passwords').errors.generic}}
+          </span>
+          <span> </span>
+          <div class="buttons">
+            <button mat-raised-button color="primary" type="submit">Register</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

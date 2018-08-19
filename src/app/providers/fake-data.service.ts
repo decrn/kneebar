@@ -129,6 +129,7 @@ export class FakeDataService implements DataService {
     }
 
     sendLogin(username: string, password: string): Observable<Status> {
+        console.log('login', username, password);
         if (username === 'denis') {
             this.user = new User('denis', 'tuur');
             this.jwttoken = 'magic';
@@ -138,6 +139,7 @@ export class FakeDataService implements DataService {
     }
 
     sendRegister(username: string, password: string): Observable<Status> {
+        console.log('register', username, password);
         if (username === 'denis') {
             return of (new Status(false, 'Account already exists!'));
         }

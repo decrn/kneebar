@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.page-content {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    width: 80%;
+
+    .form {
+        width: 40%;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;;
+
+        form {
+            display: flex;
+            flex-flow: column nowrap;
+        }
+
+        mat-form-field {
+            padding-bottom: 12px;
+        }
+
+        .bottom-row {
+            display: flex;
+            justify-content: space-between;
+            flex-flow: row nowrap;
+            align-items: baseline;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+            flex-flow: row nowrap;
+        }
+    }
+}
