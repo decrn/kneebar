@@ -1,7 +1,6 @@
 import { AppCommonModule } from '../../app-common.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CommentboxComponent } from './commentbox.component';
+import { CommentBoxComponent } from './comment-box.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -11,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule
   ],
-  declarations: [CommentboxComponent],
-  exports: [CommentboxComponent]
+  declarations: [CommentBoxComponent],
+  exports: [CommentBoxComponent]
 })
-export class CommentboxModule { }
+export class CommentBoxModule { }

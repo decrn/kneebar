@@ -1,4 +1,5 @@
-import { CommentboxModule } from '../commentbox/commentbox.module';
+import { CommentViewModule } from '../comment-view/comment-view.module';
+import { CommentBoxModule } from '../comment-box/comment-box.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetailComponent } from './detail.component';
@@ -19,8 +20,9 @@ const routes = [
     AppCommonModule,
     ItemShelfModule,
     MatChipsModule,
-    CommentboxModule,
-    MatDividerModule
+    CommentBoxModule,
+    MatDividerModule,
+    CommentViewModule
   ],
   declarations: [DetailComponent]
 })

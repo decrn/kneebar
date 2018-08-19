@@ -2,11 +2,11 @@ import { Item } from '../../models/item';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-commentbox',
-  templateUrl: './commentbox.component.html',
-  styleUrls: ['./commentbox.component.less']
+  selector: 'app-comment-box',
+  templateUrl: './comment-box.component.html',
+  styleUrls: ['./comment-box.component.less']
 })
-export class CommentboxComponent implements OnInit {
+export class CommentBoxComponent implements OnInit {
 
   @Input('item') item: Item;
 

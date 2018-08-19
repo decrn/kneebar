@@ -32,10 +32,10 @@
       <mat-divider></mat-divider>
       <h2>User comments</h2>
       <ng-container>
-        <app-commentbox [item]="item"></app-commentbox>
+        <app-comment-box [item]="item"></app-comment-box>
         <mat-divider></mat-divider>
       </ng-container>
-      
+      <app-comment-view [item]="item"></app-comment-view>
     </div>
   </div>
 

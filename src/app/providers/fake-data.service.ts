@@ -41,7 +41,8 @@ export class FakeDataService implements DataService {
     private comments: Comment[] = [
         new Comment('jiujitsu4life', 'I really like this style of submission. Works for me in competition and on the mats.'),
         new Comment('ilovearmbars1992', 'I\'m new to ground fighting but I\'m already in love! What\'s next???'),
-    ]
+        new Comment('nashajitsu', 'I really struggled with this, but I got better reading the description.'),
+    ];
 
 
     private rootCategory: Category = new Category('', 'Positions overview', '', [], this.categories);
