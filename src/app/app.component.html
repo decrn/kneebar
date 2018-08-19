@@ -1,4 +1,9 @@
 <div class="container">
   <app-nav></app-nav>
+
+  <div class="loader" *ngIf="ds.loading">
+    <mat-spinner></mat-spinner>
+  </div>
+
   <router-outlet></router-outlet>
 </div>

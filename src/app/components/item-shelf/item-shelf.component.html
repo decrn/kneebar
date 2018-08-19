@@ -1,3 +1,4 @@
+<span *ngIf="!items || !items.length" class="error">There are no items.</span>
 <mat-card *ngFor="let item of items" [routerLink]="[ '/submission/', item.name]">
   <mat-card-footer>{{item.title}}</mat-card-footer>
   <img mat-card-image src="assets/images/submissions/thumbnails/{{item.thumbnail}}" alt="{{item.title}}">

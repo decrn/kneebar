@@ -20,14 +20,23 @@
     .submission-list {
         display: flex;
         justify-content: center;
+
         .mat-list {
-            width: 62%;
+
+            width: 100%;
+            
             mat-list-item {
                 cursor: pointer;
                 
                 .rating {
                     padding-left: 15px;
                 }
+            }
+        }
+
+        @media (min-width: 800px) {
+            .mat-list {
+                width: 62%;
             }
         }
     }

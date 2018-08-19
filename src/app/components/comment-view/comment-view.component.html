@@ -1,9 +1,10 @@
 <mat-form-field>
   <mat-select [(ngModel)]="sorting" placeholder="Order by">
-    <mat-option value="-date">newest first</mat-option>
-    <mat-option value="date">oldest first</mat-option>
+    <mat-option value="-date">Newest first</mat-option>
+    <mat-option value="date">Oldest first</mat-option>
   </mat-select>
 </mat-form-field>
+
 <ul class="comments">
   <li *ngFor="let comment of (comments | orderBy:sorting)">
     <div class="comment-info">

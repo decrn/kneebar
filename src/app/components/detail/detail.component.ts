@@ -14,6 +14,7 @@ export class DetailComponent implements OnInit {
 
   public item: Item;
   comments: Comment[];
+  window = window; // make window global variable accessible from template
 
   constructor(
     public route: ActivatedRoute,

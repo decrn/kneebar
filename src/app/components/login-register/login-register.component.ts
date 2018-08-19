@@ -48,7 +48,8 @@ export class LoginRegisterComponent implements OnInit {
         this.loginform.value['password'],
       ).subscribe((status) => {
           if (status.success) {
-            this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/']);
+            let redirect = this.route.snapshot.queryParams['redirect'] || '/account';
+            this.router.navigate([redirect]);
           } else {
             this.loginform.get('password').setErrors({credentials: status.errorMessage});
           }
@@ -67,7 +68,8 @@ export class LoginRegisterComponent implements OnInit {
           this.registerform.value['passwords']['password'],
         ).subscribe((status) => {
           if (status.success) {
-            this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/']);
+            let redirect = this.route.snapshot.queryParams['redirect'] || '/account';
+            this.router.navigate([redirect]);
           } else {
             this.registerform.get('passwords').setErrors({'generic': status.errorMessage});
           }

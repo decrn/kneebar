@@ -1,9 +1,16 @@
 <mat-toolbar class="header">
   <h1>Account overview</h1>
 </mat-toolbar>
-<h1>Welcome to your account overview, {{user.username}}</h1>
-<button mat-button (click)="ds.logout()">Logout</button>
 
-<h2>Your comments</h2>
-<app-comment-view [comments]="comments"></app-comment-view>
+<div class="account-page-container">
+  <div class="account-page-content">
+    <h1>
+      Welcome to your account overview, {{user.username}}
+      <button mat-raised-button color="primary" (click)="ds.logout()" class="logout-button">Logout</button>
+    </h1>
 
+    <h1>Your comments</h1>
+    <app-comment-view [comments]="comments"></app-comment-view>
+
+  </div>
+</div>

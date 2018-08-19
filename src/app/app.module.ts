@@ -9,6 +9,7 @@ import { AppCommonModule } from './app-common.module';
 import { FakeDataService } from './providers/fake-data.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppCommonModule,
     BrowserAnimationsModule,
     NavModule,
+    MatProgressSpinnerModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

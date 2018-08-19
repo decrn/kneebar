@@ -30,15 +30,21 @@
       <app-item-shelf [items]="item.related"></app-item-shelf>
   
       <mat-divider></mat-divider>
+
       <h2>User comments</h2>
+      
       <ng-container *ngIf="ds.isLoggedIn(); else loginCTA">
         <app-comment-box [item]="item"></app-comment-box>
         <mat-divider></mat-divider>
       </ng-container>
+
       <ng-template #loginCTA>
-        <h4>Please log in to leave comments...</h4>
-        <button mat-raised-button color="primary" [routerLink]="'/login'">Log in</button>
+        <p>
+          Please log in to leave comments
+          <button mat-raised-button color="primary" [routerLink]="'/login'" [queryParams]="{redirect: window.location.pathname}" class="loginCTA">Log in</button>
+        </p>
       </ng-template>
+
       <app-comment-view [comments]="comments"></app-comment-view>
     </div>
   </div>

@@ -7,14 +7,14 @@
         </a>
       </li>
       <li>
-        <a mat-button [routerLink]="'/positions'">
-                Discover
-            </a>
+        <a mat-button [routerLink]="'/positions'" routerLinkActive="active-link">
+          Discover
+        </a>
       </li>
       <li>
-        <a mat-button [routerLink]="'/submissions'">
-                Submissions
-            </a>
+        <a mat-button [routerLink]="'/submissions'" routerLinkActive="active-link">
+          Submissions
+        </a>
       </li>
     </ul>
   </nav>
@@ -23,15 +23,15 @@
       <ng-container *ngIf="!ds.isLoggedIn(); else myAccount">
         <li>
           <a mat-stroked-button [routerLink]="'/login'">
-                      Login
-                  </a>
+            Login
+          </a>
         </li>
       </ng-container>
       <ng-template #myAccount>
         <li>
           <a mat-stroked-button [routerLink]="'/account'">
-                      My account
-                  </a>
+            My account
+          </a>
         </li>
       </ng-template>
 
