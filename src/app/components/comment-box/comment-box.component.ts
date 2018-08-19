@@ -12,6 +12,7 @@ export class CommentBoxComponent implements OnInit {
 
   @Input('item') item: Item;
   errorMessage: string;
+  commentText: string;
   user: User;
 
   constructor(

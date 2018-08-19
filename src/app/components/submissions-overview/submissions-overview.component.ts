@@ -11,6 +11,7 @@ import { AbstractControl } from '../../../../node_modules/@angular/forms';
 export class SubmissionsOverviewComponent implements OnInit {
 
   submissions: Submission[] = [];
+  query: string;
 
   constructor(
     @Inject('DataService') public ds: DataService

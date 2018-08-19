@@ -106,9 +106,7 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   // check if field should show error
-  private isErrorVisible(control: AbstractControl, error: string) {
+  isErrorVisible(control: AbstractControl, error: string) {
     return control.touched && control.errors && control.errors[error];
-}
-
-
+  }
 }
