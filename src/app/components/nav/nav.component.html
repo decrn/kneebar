@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+  <nav class="left">
+    <ul>
+      <li>
+        <a mat-icon-button [routerLink]="'/'">
+          <mat-icon aria-label="Home">home</mat-icon>
+        </a>
+      </li>
+      <li>
+        <a mat-button [routerLink]="'/positions'">
+                Discover
+            </a>
+      </li>
+      <li>
+        <a mat-button [routerLink]="'/submissions'">
+                Submissions
+            </a>
+      </li>
+    </ul>
+  </nav>
+  <nav class="right">
+    <ul>
+      <ng-container *ngIf="!ds.isLoggedIn(); else myAccount">
+        <li>
+          <a mat-stroked-button [routerLink]="'/login'">
+                      Login
+                  </a>
+        </li>
+      </ng-container>
+      <ng-template #myAccount>
+        <li>
+          <a mat-stroked-button [routerLink]="'/account'">
+                      My account
+                  </a>
+        </li>
+      </ng-template>
+
+    </ul>
+  </nav>
+</mat-toolbar>
