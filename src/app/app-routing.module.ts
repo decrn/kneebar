@@ -1,3 +1,5 @@
+import { AuthGuard } from './providers/auth.guard';
+import { NoAuthGuard } from './providers/noauth.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -8,6 +10,16 @@ const routes = [
   {
     path: 'positions',
     loadChildren: './components/positions-overview/positions-overview.module#PositionsOverviewModule'
+  },
+  {
+    path: 'account',
+    loadChildren: './components/account/account.module#AccountModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    loadChildren: './components/login-register/login-register.module#LoginRegisterModule',
+    canActivate: [NoAuthGuard]
   },
   {
     path: 'submissions',
@@ -25,6 +37,7 @@ const routes = [
   exports: [
     RouterModule
   ],
-  declarations: []
+  declarations: [],
+  providers: [ AuthGuard, NoAuthGuard ]
 })
 export class AppRoutingModule { }

@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { User } from '../models/user';
+import { Status } from '../models/status';
 import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
@@ -7,6 +10,7 @@ import { Submission } from '../models/submission';
 import { Category } from '../models/category';
 import { Item } from '../models/item';
 import { Comment } from '../models/comment';
+import { LocalStorage } from 'ngx-store';
 @Injectable({
     providedIn: 'root',
 })
@@ -38,18 +42,23 @@ export class FakeDataService implements DataService {
         new Category('standing', 'Standing', 'standing.jpg', [this.positions[2]], [this.subcategories[1]]),
     ];
 
+    @LocalStorage() private jwttoken: string;
+    private user = new User('denis', 'tuur');
+
     private comments: Comment[] = [
-        new Comment('jiujitsu4life', 'I really like this style of submission. Works for me in competition.', new Date(2018, 8, 19)),
-        new Comment('ilovearmbars1992', 'I\'m new to ground fighting but I\'m already in love! What\'s next???', new Date(1970, 1, 1)),
-        new Comment('nashajitsu', 'I really struggled with this, but I got better reading the description.', new Date(2000, 12, 31)),
+        new Comment(this.user, 'I really like this style of submission. Works for me in competition.', new Date(2018, 8, 19)),
+        new Comment(this.user, 'I\'m new to ground fighting but I\'m already in love! What\'s next???', new Date(1970, 1, 1)),
+        new Comment(this.user, 'I really struggled with this, but I got better reading the description.', new Date(2000, 12, 31)),
     ];
+
+
 
 
     private rootCategory: Category = new Category('', 'Positions overview', '', [], this.categories);
 
     private allCategories = this.categories.concat(this.subcategories);
 
-    constructor() {
+    constructor(public router: Router) {
         const armbar = "The jūji-gatame (十字固め, rendered as \"Ude-Hishigi-Juji-Gatame\"), also sometimes used interchangeably with the terms armbar, cross armbar or straight armbar, is an official Kodokan Judo technique. The English word \"bar\" is used here to signify the opponent's extended arm, while the Japanese word \"jūji\" (十字) refers to the armbar's visual resemblance to the number 10 as written in kanji, 十. The word jūji is also found in \"jūjika\" (十字架), meaning a cross. In general, the practitioner secures an arm at the wrist of the opponent, trapping it by squeezing the knees together. To initiate the submission one of the legs will be across the chest of the opponent, the second leg's calf will cross face the opponent, with the hips tight into the armpit, with the arm held between the thighs, with the elbow pointing against the thigh or hips. By holding the opponent's wrist to the attacker's chest with the pinky finger on the sternum and the thumb facing up (arm semi-supinated or semi-pronated), the practitioner can easily extend the opponent's arm and hyperextend the opponent's elbow. The attacker can further increase the pressure on the elbow joint by arching his hips against the elbow. This technique is used in various grappling martial arts, including but not limited to Brazilian jiu-jitsu, catch wrestling, judo, jujutsu, Sambo, and shoot wrestling, and is one of the most common ways to win a match in mixed martial arts competition.";
         const guard = "The guard is a ground grappling position in which one combatant has their back to the ground while attempting to control the other combatant using their legs. In pure grappling combat sports, the guard is considered an advantageous position, because the bottom combatant can attack with various joint locks and chokeholds, while the top combatant's priority is the transition into a more dominant position, a process known as passing the guard. In mixed martial arts competition or hand-to-hand combat in general, it is possible to effectively strike from the top in the guard, even though the bottom combatant exerts some control. There are various types of guard, with their own advantages and disadvantages.";
         this.submissions.forEach(s => s.description = armbar);
@@ -59,6 +68,9 @@ export class FakeDataService implements DataService {
         this.submissions.forEach(s => s.tags = tags);
         this.submissions.forEach(s => s.image = 'armbar.jpg');
         this.positions.forEach(p => p.image = 'backmount.jpg');
+        if (!this.jwttoken) {
+            this.jwttoken = 'magic';
+        }
     }
 
 
@@ -82,7 +94,56 @@ export class FakeDataService implements DataService {
         );
     }
 
-    getComments(name: string): Observable<Comment[]> {
+    getCommentsByItem(name: string): Observable<Comment[]> {
         return of(this.comments);
     }
+
+    getCommentsByUser(): Observable<Comment[]> {
+        return of([this.comments[1]]);
+    }
+
+
+    sendComment(message: string): Observable<Status> {
+        const status: Status = new Status();
+        if (message) {
+            status.success = true;
+        } else {
+            status.success = false;
+            status.errorMessage = 'The message was empty!';
+        }
+        return of(status);
+    }
+
+    getLoggedInUser(): Observable<User> {
+        return of(this.user);
+    }
+
+    isLoggedIn(): boolean {
+        return this.jwttoken ? true : false;
+    }
+
+    logout() {
+        this.user = null;
+        this.jwttoken = '';
+        this.router.navigate(['/']);
+    }
+
+    sendLogin(username: string, password: string): Observable<Status> {
+        if (username === 'denis') {
+            this.user = new User('denis', 'tuur');
+            this.jwttoken = 'magic';
+            return of (new Status(true));
+        }
+        return of (new Status(false, 'Invalid credentials'));
+    }
+
+    sendRegister(username: string, password: string): Observable<Status> {
+        if (username === 'denis') {
+            return of (new Status(false, 'Account already exists!'));
+        }
+        this.user = new User('denis', 'tuur');
+        this.jwttoken = 'magic';
+        return of (new Status(true));
+    }
+
 }

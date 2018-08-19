@@ -1,3 +1,5 @@
+import { Status } from '../models/status';
+import { User } from '../models/user';
 import { Observable } from 'rxjs';
 import { Submission } from '../models/submission';
 import { Position } from '../models/position';
@@ -10,5 +12,13 @@ export interface DataService {
     getCategory(name?: string): Observable<Category>;
     getSubmissions(): Observable<Submission[]>;
     getItem(name: string): Observable<Item>;
-    getComments(name: string): Observable<Comment[]>;
+    getCommentsByItem(name: string): Observable<Comment[]>;
+    getCommentsByUser(): Observable<Comment[]>;
+    getLoggedInUser(): Observable<User>;
+    isLoggedIn(): boolean;
+    logout();
+
+    sendComment(message: string): Observable<Status>;
+    sendLogin(username: string, password: string): Observable<Status>;
+    sendRegister(username: string, password: string): Observable<Status>;
 }

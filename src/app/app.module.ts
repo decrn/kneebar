@@ -1,15 +1,14 @@
+import { NavModule } from './components/nav/nav.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { WebStorageModule } from 'ngx-store';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppCommonModule } from './app-common.module';
 import { FakeDataService } from './providers/fake-data.service';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -18,12 +17,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   ],
   imports: [
     BrowserModule,
+    WebStorageModule,
     AppRoutingModule,
     AppCommonModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule
+    NavModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
