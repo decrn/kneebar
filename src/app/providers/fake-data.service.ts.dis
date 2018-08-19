@@ -43,7 +43,7 @@ export class FakeDataService implements DataService {
     ];
 
     @LocalStorage() private jwttoken: string;
-    private user = new User('denis', 'tuur');
+    private user = new User('', 'denis', 'tuur');
 
     private comments: Comment[] = [
         new Comment(this.user, 'I really like this style of submission. Works for me in competition.', new Date(2018, 8, 19)),

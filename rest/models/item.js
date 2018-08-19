@@ -5,6 +5,7 @@ var ItemSchema = new Schema({
     name: { type: String, unique: true, required: true },
     title: String,
     description: String,
+    submissions: [{ type: Schema.Types.ObjectId, ref: 'Item' }],
     related: [{ type: Schema.Types.ObjectId, ref: 'Item' }],
     image: String,
     thumbnail: String,

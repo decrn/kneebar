@@ -22,8 +22,11 @@ export class DetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.ds.getItem(this.route.snapshot.paramMap.get('name')).subscribe(item => this.item = item);
-    this.ds.getCommentsByItem(this.item.name).subscribe(comments => this.comments = comments);
+    this.ds.getItem(this.route.snapshot.paramMap.get('name')).subscribe(item => {
+      this.item = item;
+
+      this.ds.getCommentsByItem(this.item.id).subscribe(comments => this.comments = comments);
+    });
   }
 
   isPosition(item: Item) {

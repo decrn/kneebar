@@ -23,14 +23,18 @@ export class CommentBoxComponent implements OnInit {
     this.ds.getLoggedInUser().subscribe(u => this.user = u);
   }
 
-  sendComment(commentText: string) {
+  sendComment() {
     this.errorMessage = '';
-    this.ds.sendComment(commentText).subscribe(s => {
-      console.log(s);
-      if (!s.success) {
-        this.errorMessage = s.errorMessage;
-      }
-    });
+    if (this.commentText) {
+      this.ds.sendComment(this.commentText, this.item.id).subscribe(s => {
+        console.log(s);
+        if (!s.success) {
+          this.errorMessage = s.errorMessage;
+        }
+      });
+    } else {
+      this.errorMessage = 'Comment can not be empty';
+    }
   }
 
 }

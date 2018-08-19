@@ -30,7 +30,7 @@ router.get('/positions', function(req, res, next) {
 });
 
 router.get('/item/:name', function(req, res, next) {
-  Item.findOne({'name': req.params.name}, function(err, item) {
+  Item.findOne({'name': req.params.name}).populate('submissions').populate('related').exec(function(err, item) {
     if (err) { return next(err); }
     res.json(item);
   });

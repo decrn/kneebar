@@ -18,7 +18,7 @@ export interface DataService {
     isLoggedIn(): boolean;
     logout();
 
-    sendComment(message: string): Observable<Status>;
+    sendComment(message: string, itemid: string): Observable<Status>;
     sendLogin(username: string, password: string): Observable<Status>;
     sendRegister(username: string, email: string, password: string): Observable<Status>;
 }

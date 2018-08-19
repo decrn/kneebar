@@ -12,7 +12,7 @@
   </div>
   <div class="submission-list">
     <mat-list>
-      <mat-list-item [routerLink]="[ '/submission/', submission.name]" *ngFor="let submission of (submissions | orderBy: 'title' | filterBy:['title', 'name'] : query)">
+      <mat-list-item [routerLink]="[ '/submission/', submission.name]" *ngFor="let submission of (submissions | orderByImpure: 'title' | filterByImpure:['title', 'name'] : query)">
           <img matListAvatar src="assets/images/submissions/thumbnails/{{submission.thumbnail}}" alt="submission.title">
           <h3 matLine>{{submission.title}}</h3>
           <p matLine>

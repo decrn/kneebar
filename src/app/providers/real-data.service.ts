@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Status } from '../models/status';
 import { User } from '../models/user';
@@ -33,7 +33,7 @@ export class RealDataService implements DataService {
         this.loading = true;
         return this.http.get(this.url + 'positions').pipe(map((json: any) => {
             this.loading = false;
-            return json.map(p => new Position(p.name, p.title, p.thumbnail, p.submission));
+            return json.map(p => Position.fromObject(p));
         }));
     }
     getCategory(name?: string): Observable<Category> {
@@ -44,14 +44,18 @@ export class RealDataService implements DataService {
         this.loading = true;
         return this.http.get(this.url + 'category/' + tempname).pipe(map((p: any) => {
             this.loading = false;
-            return new Category(p.name, p.title, p.thumbnail);
+            return new Category(
+                p.name, p.title, p.thumbnail,
+                p.items.map(c => Position.fromObject(c)),
+                p.subcategories.map(c => new Category(c.name, c.title, c.thumbnail))
+            );
         }));
     }
     getSubmissions(): Observable<Submission[]> {
         this.loading = true;
         return this.http.get(this.url + 'submissions').pipe(map((json: any) => {
             this.loading = false;
-            return json.map(p => new Submission(p.name, p.title, p.thumbnail));
+            return json.map(p => Submission.fromObject(p));
         }));
     }
     getItem(name: string): Observable<Item> {
@@ -59,9 +63,9 @@ export class RealDataService implements DataService {
         return this.http.get(this.url + 'item/' + name).pipe(map((p: any) => {
             this.loading = false;
             if (p.type === 'position') {
-                return new Position(p.name, p.title, p.thumbnail, p.submission);
+                return Position.fromObject(p);
             } else {
-                return new Submission(p.name, p.title, p.thumbnail);
+                return Submission.fromObject(p);
             }
         }));
     }
@@ -74,7 +78,9 @@ export class RealDataService implements DataService {
     }
     getCommentsByUser(): Observable<Comment[]> {
         this.loading = true;
-        return this.http.get(this.url + 'comments').pipe(map((json: any) => {
+        return this.http.get(this.url + 'comments', {
+            headers: new HttpHeaders({Authorization: 'Bearer ' + this.jwttoken })
+          }).pipe(map((json: any) => {
             this.loading = false;
             return json.map(p => new Comment(p.author, p.comment, p.date));
         }));
@@ -82,9 +88,15 @@ export class RealDataService implements DataService {
 
     getLoggedInUser(): Observable<User> {
         this.loading = true;
-        return this.http.get(this.url + 'users/account').pipe(map((json: any) => {
+        if (this.user) {
+            return of(this.user);
+        }
+        return this.http.get(this.url + 'users/account', {
+            headers: new HttpHeaders({Authorization: 'Bearer ' + this.jwttoken })
+          }).pipe(map((json: any) => {
             this.loading = false;
-            return new User(json._id, json.username, json.email);
+            this.user = new User(json._id, json.username, json.email);
+            return this.user;
         }));
     }
 
@@ -98,12 +110,15 @@ export class RealDataService implements DataService {
         this.router.navigate(['/']);
     }
 
-    sendComment(message: string): Observable<Status> {
+    sendComment(comment: string, itemid: string): Observable<Status> {
         return this.http.post(this.url + 'comment', {
-            comment: message
+            item: itemid,
+            comment: comment,
+            author: this.user.id
+        }, {
+            headers: new HttpHeaders({Authorization: 'Bearer ' + this.jwttoken })
         }).pipe(map((json: any) => {
-            return new Status();
-            // return new Comment(this.user, res.comment, res.date);
+            return new Status(true, '', new Comment(this.user, json.comment, json.date));
         }));
     }
 
@@ -130,7 +145,7 @@ export class RealDataService implements DataService {
                 this.jwttoken = json.token;
                 return new Status(true);
             }
-            return new Status(false, 'Invalid credentials');
+            return new Status(false, 'Email or username is already in use');
         }));
     }
 }
