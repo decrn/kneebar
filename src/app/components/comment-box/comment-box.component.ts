@@ -21,6 +21,7 @@ export class CommentBoxComponent implements OnInit {
 
   ngOnInit() {
     this.ds.getLoggedInUser().subscribe(u => this.user = u);
+    console.log(this.user);
   }
 
   sendComment() {

@@ -49,7 +49,9 @@ export class LoginRegisterComponent implements OnInit {
       ).subscribe((status) => {
           if (status.success) {
             const redirect = this.route.snapshot.queryParams['redirect'] || '/account';
-            this.router.navigate([redirect]);
+            setTimeout(() => {
+              this.router.navigate([redirect]);
+            }, 350);
           } else {
             this.loginform.get('password').setErrors({credentials: status.errorMessage});
           }

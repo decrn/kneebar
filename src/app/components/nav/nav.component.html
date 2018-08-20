@@ -22,7 +22,7 @@
     <ul>
       <ng-container *ngIf="!ds.isLoggedIn(); else myAccount">
         <li>
-          <a mat-stroked-button [routerLink]="'/login'">
+          <a mat-stroked-button [routerLink]="'/login'" [queryParams]="{redirect: '/account'}">
             Login
           </a>
         </li>
