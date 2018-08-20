@@ -50,7 +50,7 @@ router.route('/comment').post(auth, function(req, res, next) {
       let comment = new Comment(
         {
           'item': req.body.item,
-          'date': Math.round(new Date().getTime()/1000), 
+          'date': new Date().getTime(), 
           'comment': req.body.comment,
           'author': decoded.id
         }
