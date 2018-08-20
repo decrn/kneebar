@@ -37,7 +37,7 @@ router.get('/item/:name', function(req, res, next) {
 });
 
 router.get('/comments/:itemid', function(req, res, next) {
-  Comment.find({'item': req.params.itemid}, function(err, comments) {
+  Comment.find({'item': req.params.itemid}).populate('author').exec(function(err, comments) {
     if (err) { return next(err); }
     res.json(comments);
   });
