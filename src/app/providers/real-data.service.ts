@@ -12,6 +12,7 @@ import { Item } from '../models/item';
 import { Comment } from '../models/comment';
 import { LocalStorage } from 'ngx-store';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -21,7 +22,7 @@ export class RealDataService implements DataService {
 
     @LocalStorage() private jwttoken: string;
     private user: User;
-    private url = 'http://localhost:3000/api/';
+    private url = environment.apiUrl;
     public loading = false;
 
     constructor(
@@ -69,6 +70,7 @@ export class RealDataService implements DataService {
             }
         }));
     }
+
     getCommentsByItem(name: string): Observable<Comment[]> {
         this.loading = true;
         return this.http.get(this.url + 'comments/' + name).pipe(map((json: any) => {
@@ -76,6 +78,7 @@ export class RealDataService implements DataService {
             return json.map(p => new Comment(p.author, p.comment, p.date));
         }));
     }
+
     getCommentsByUser(): Observable<Comment[]> {
         this.loading = true;
         return this.http.get(this.url + 'comments', {
