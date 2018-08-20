@@ -8,6 +8,8 @@ import { Item } from '../models/item';
 import { Comment } from '../models/comment';
 
 export interface DataService {
+    loading: boolean;
+
     getPositions(): Observable<Position[]>;
     getCategory(name?: string): Observable<Category>;
     getSubmissions(): Observable<Submission[]>;
