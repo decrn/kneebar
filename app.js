@@ -43,10 +43,10 @@ app.use('/api/users', usersRouter);
 
 app.use(express.static(__dirname + '/dist'));
 
-// app.all('*', (req, res) => {
-//   const indexFile = `${path.join(__dirname, 'dist')}/index.html`;
-//   res.status(200).sendFile(indexFile);
-// }); 
+app.all('*', (req, res) => {
+  const indexFile = `${path.join(__dirname, 'dist')}/index.html`;
+  res.status(200).sendFile(indexFile);
+}); 
 
 
 /* 

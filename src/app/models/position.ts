@@ -34,6 +34,11 @@ export class Position implements Item {
             object.name, object.title, object.description, object.image,
             object.video, object.thumbnail,
             object.submissions.map(s => s instanceof Object ? Submission.fromObject(s) : null),
-            object.related.map(s => Position.fromObject(s)));
+            object.related ? object.related.map((s) => {
+                if (typeof(s) === 'string')
+                    return;
+                return Position.fromObject(s);
+            }): []
+        );
     }
 }
