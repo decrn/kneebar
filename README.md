@@ -1,27 +1,40 @@
-# OpenJitsuApp
+# OpenJitsu Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.5.
+OpenJitsu is an open-source, user-driven platform for learning Brazilian Jiu-Jitsu. It offers users an intuitive app that breaks down key positions into submisssions and defenses, allowing beginners to quickly grasp concepts like Mount, Guard and Side Control, as well as advanced break downs, historical information and instructional step-by-steps for specific moves that appeal to more advanced practitioners.
 
-## Development server
+### Screenshots
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![Landing page](/showcase/landing.png)
+![Login page](/showcase/login.png)
+![Explore page](/showcase/master.png)
+![Detail page](/showcase/detail.png)
+![Submissions page](/showcase/sub-search.png)
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Clone this repository and run `npm install`
+```bash
+git clone https://github.com/decrn/openjitsu-ios openjitsu-ios && npm install
+```
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Running
 
-## Running unit tests
+Easy as pie to get up:
+```bash
+npm start
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Maintainers
 
-## Running end-to-end tests
+This project is mantained by:
+* [Denis Carnier](http://github.com/decrn)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## Contributing
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+5. Push your branch (`git push origin my-new-feature`)
+6. Create a new Pull Request
